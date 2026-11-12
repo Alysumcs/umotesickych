@@ -1,0 +1,68 @@
+/* ===== pohyb a interaktivita (motion.js) ===== */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* úvod: skryté, kým sa nespustí animácia (poistka v <head> to po 2,5 s zruší) */
+.motion:not(.motion-ready) .hero-text>*,.motion:not(.motion-ready) .hero-photo{opacity:0}
+
+/* slová nadpisov vychádzajú spoza linky */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:.14em .02em .1em;margin:-.14em -.02em -.1em}
+.wi{display:inline-block;will-change:transform}
+
+/* hlavička: schová sa pri scrollovaní dole, vráti pri scrollovaní hore */
+.top{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.top.is-hidden{transform:translateY(-101%)}
+.top.is-scrolled{box-shadow:0 10px 30px rgba(8,24,18,.35)}
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--zlata);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+
+/* tlačidlá a odkazy */
+.btn{transition:background .18s,color .18s,border-color .18s,transform .25s cubic-bezier(.2,.7,.2,1)}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(0) scale(.98)}
+.top nav a:not(.btn){background:linear-gradient(var(--zlata),var(--zlata)) 0 100%/0 2px no-repeat;border-bottom-color:transparent!important;transition:background-size .3s cubic-bezier(.2,.7,.2,1)}
+.top nav a:not(.btn):hover,.top nav a[aria-current]{background-size:100% 2px}
+
+/* obedová lišta: dnešné menu */
+.lunch-today{display:block;margin-top:8px;font:400 1.08rem/1.35 var(--text);text-transform:none;letter-spacing:0}
+.lunch-today b{font:800 .86em/1 var(--display);text-transform:uppercase;letter-spacing:.12em;margin-right:.6em}
+.lunch-today i{font-style:normal;opacity:.45;margin:0 .5em}
+
+/* lístok: kategórie a alergény */
+.menu-tools{margin:0 0 clamp(24px,4vw,40px)}
+.menu-nav{display:flex;gap:8px;flex-wrap:wrap;padding:10px 0;z-index:5}
+.chip{font:700 .92rem/1 var(--display);text-transform:uppercase;letter-spacing:.1em;padding:10px 14px 9px;border:2px solid var(--kachla);border-radius:2px;background:transparent;color:var(--kachla);cursor:pointer;white-space:nowrap;transition:background .18s,color .18s,transform .2s}
+.chip:hover{transform:translateY(-2px)}
+.chip[aria-pressed=true],.chip[aria-current=true]{background:var(--kachla);color:var(--pena)}
+.chip:focus-visible,.step button:focus-visible,.photos figure:focus-visible{outline:3px solid var(--zlata);outline-offset:2px}
+.alg{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;padding-top:14px;border-top:1px solid var(--linka)}
+.alg-label{font-size:1rem;margin-right:6px}
+.alg .chip{border-width:1px;padding:8px 11px 7px;font-size:.84rem}
+.alg .chip[aria-pressed=true]{background:#B5361F;border-color:#B5361F;color:#fff}
+.alg-count{font-size:.95rem;color:#56685f;margin-left:4px}
+.dish{transition:opacity .35s,filter .35s}
+.dish.is-out{opacity:.26;filter:saturate(.2)}
+.dish.is-out .price{text-decoration:line-through}
+.dish h4,.dish .price{transition:color .2s,transform .3s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.dish:not(.is-out):hover h4{transform:translateX(8px)}.dish:not(.is-out):hover .price{color:#9a6a0c}}
+.dish.is-flash{animation:flash 1.6s ease-out}
+@keyframes flash{0%,35%{background:rgba(224,161,43,.32);box-shadow:-14px 0 0 rgba(224,161,43,.32),14px 0 0 rgba(224,161,43,.32)}100%{background:transparent;box-shadow:-14px 0 0 transparent,14px 0 0 transparent}}
+.photos figure[role=button]{cursor:pointer}
+.photos figcaption{transition:padding-bottom .3s cubic-bezier(.2,.7,.2,1)}
+.photos figcaption::after{content:"Nájsť v lístku";display:block;font-size:.72em;letter-spacing:.14em;color:var(--zlata);max-height:0;opacity:0;overflow:hidden;transition:max-height .3s,opacity .3s,margin .3s}
+@media (hover:hover){.photos figure[role=button]:hover figcaption::after,.photos figure[role=button]:focus-visible figcaption::after{max-height:2em;opacity:1;margin-top:8px}}
+.arch img,.tap-photo img,.ext img{will-change:transform}
+
+/* rezervácia: počítadlo osôb */
+.step{display:flex;align-items:stretch}
+.step input{flex:1;min-width:0;text-align:center;-moz-appearance:textfield;appearance:textfield;border-radius:0}
+.step input::-webkit-outer-spin-button,.step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.step button{flex:0 0 44px;font:800 1.4rem/1 var(--display);background:var(--zlata);color:var(--kachla-tmava);border:0;cursor:pointer;transition:background .15s,transform .15s}
+.step button:hover{background:var(--pena)}.step button:active{transform:scale(.92)}
+
+@media (max-width:900px){
+  .menu-nav{position:sticky;top:var(--hh,0px);flex-wrap:nowrap;overflow-x:auto;margin:0 -20px;padding:10px 20px;background:var(--papier);box-shadow:0 1px 0 var(--linka);scrollbar-width:none;transition:top .45s cubic-bezier(.2,.7,.2,1)}
+  .menu-nav::-webkit-scrollbar{display:none}
+}
+@media (prefers-reduced-motion:reduce){.btn:hover,.chip:hover{transform:none}.dish.is-flash{animation:none;background:rgba(224,161,43,.25)}}
+.res .step{margin-top:7px}.res .step input{margin-top:0}

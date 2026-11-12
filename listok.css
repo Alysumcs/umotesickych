@@ -1,0 +1,73 @@
+@font-face{font-family:"Big Shoulders";src:url(fonts/big-shoulders-display-latin-ext-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0}
+@font-face{font-family:"Big Shoulders";src:url(fonts/big-shoulders-display-latin-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Big Shoulders";src:url(fonts/big-shoulders-display-latin-ext-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0}
+@font-face{font-family:"Big Shoulders";src:url(fonts/big-shoulders-display-latin-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+@font-face{font-family:"Newsreader";src:url(fonts/newsreader-latin-ext-400-normal.woff2) format("woff2");font-weight:400;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+20A0-20AB,U+20AD-20C0}
+@font-face{font-family:"Newsreader";src:url(fonts/newsreader-latin-400-normal.woff2) format("woff2");font-weight:400;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2212}
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+:root{--g:#173A2C;--gd:#0F2A20;--c:#FBF8EE;--p:#F4EEDD;--z:#E0A12B;--zt:#8a6a1a}
+html,body{margin:0;background:#fff;color:var(--g);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet{width:210mm;height:297mm;display:flex;flex-direction:column;font:400 9.4pt/1.27 "Newsreader",Georgia,serif;background:var(--c);position:relative;overflow:hidden;page-break-after:always}
+
+/* hlavička: zelený pás so zlatou linkou */
+.sheet>header{background:var(--g);color:var(--p);padding:6.5mm 14mm 6mm;display:flex;align-items:center;justify-content:space-between;gap:8mm;position:relative}
+.sheet>header::after{content:"";position:absolute;left:0;right:0;bottom:-1.6mm;height:.5mm;background:var(--z)}
+.plogo{height:15.5mm;width:auto;display:block;flex:none}
+.ttl{text-align:right}
+h1{font:800 28pt/1 "Big Shoulders",sans-serif;text-transform:uppercase;letter-spacing:.1em;margin:0;color:var(--z)}
+.ttl p{margin:1.8mm 0 0;font:700 7.6pt/1.2 "Big Shoulders",sans-serif;text-transform:uppercase;letter-spacing:.2em;color:rgba(244,238,221,.8)}
+
+/* dve okná s oblúkom – ako okná paláca */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:7mm;flex:1;padding:7mm 11mm 0;min-height:0}
+.win{position:relative;border:.55mm solid var(--g);border-radius:44mm 44mm 0 0/26mm 26mm 0 0;padding:6.5mm 7.5mm 4.5mm;display:flex;flex-direction:column}
+.win::before{content:"";position:absolute;inset:1.3mm;border:.2mm solid var(--z);border-radius:42.7mm 42.7mm 0 0/24.7mm 24.7mm 0 0;pointer-events:none}
+.win>.crown{width:6mm;height:auto;display:block;margin:0 auto 2mm;flex:none}
+section{margin-bottom:3.4mm;flex:none}
+section:last-of-type{margin-bottom:0}
+h2{font:800 15.5pt/1 "Big Shoulders",sans-serif;text-transform:uppercase;letter-spacing:.07em;margin:0 0 1.2mm;text-align:center;position:relative;padding-bottom:2.3mm}
+h2::after{content:"";position:absolute;left:0;right:0;bottom:0;border-top:.55mm solid var(--g)}
+h2 small{display:block;font:700 6.8pt/1 "Big Shoulders",sans-serif;letter-spacing:.24em;color:var(--zt);margin-top:1.2mm}
+h2 em{display:block;text-align:right;margin:1.2mm 0 -1mm;font:700 7.2pt/1 "Big Shoulders",sans-serif;letter-spacing:.1em;font-style:normal;color:var(--zt)}
+ul{list-style:none;margin:0;padding:0}
+li{padding:1.3mm 0 1.2mm;border-bottom:.2mm solid rgba(23,58,44,.22)}
+li:last-child{border-bottom:0}
+.l1{display:flex;align-items:baseline;gap:1.8mm}
+.l1 b{font:700 11.2pt/1.05 "Big Shoulders",sans-serif;text-transform:uppercase;letter-spacing:.025em}
+.l1 i{flex:1;border-bottom:.3mm dotted rgba(23,58,44,.4);transform:translateY(-1mm);min-width:4mm}
+.l1 span{font:800 11.2pt/1 "Big Shoulders",sans-serif;white-space:nowrap}
+.l2{margin-top:.35mm}
+.l3{font-size:7.3pt;color:#5c6d64;margin-top:.25mm}
+.lunchp{background:var(--g);color:var(--p);margin:auto -7.5mm -4.5mm;padding:3.6mm 7.5mm 3.4mm;flex:none;display:flex;align-items:center;justify-content:space-between;gap:5mm;font-size:8.8pt;line-height:1.3}
+.lunchp b{font:800 13pt/1 "Big Shoulders",sans-serif;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:1mm;color:var(--z)}
+.lunchp strong{font:800 21pt/1 "Big Shoulders",sans-serif;color:var(--z);white-space:nowrap}
+.fill{margin-top:auto;text-align:center;padding-top:2mm;flex:none}
+.fill svg{width:8mm;height:auto;opacity:.9}
+.fill p{margin:1.6mm 0 0;font:700 7.4pt/1.35 "Big Shoulders",sans-serif;text-transform:uppercase;letter-spacing:.2em;color:var(--zt)}
+
+/* pätička */
+.sheet>footer{text-align:center;font-size:7.4pt;color:#4c5e55;padding:2.6mm 14mm 0;flex:none}
+.sheet>footer p{margin:0}
+.sheet>footer .addr{background:var(--g);color:var(--p);margin:2.6mm -14mm 0;padding:2.8mm 14mm 2.6mm;font:700 7.8pt/1 "Big Shoulders",sans-serif;text-transform:uppercase;letter-spacing:.2em}
+.sheet>footer .addr b{color:var(--z);font-weight:800}
+
+.drink li{padding:1.6mm 0 1.5mm}
+.drink h2 small{display:none}
+.drink h2{padding-bottom:2.6mm}
+
+/* denné menu */
+.badge{flex:none;width:25mm;height:25mm;border-radius:50%;background:var(--z);color:var(--gd);display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 15pt/1 "Big Shoulders",sans-serif;margin:-3mm 0}
+.badge small{font:700 5.8pt/1.15 "Big Shoulders",sans-serif;letter-spacing:.14em;text-transform:uppercase;margin-top:1mm;text-align:center}
+.dm>header .ttl{margin-left:auto}
+.dmlist{flex:1;display:flex;flex-direction:column;gap:4.5mm;padding:8mm 11mm 1mm;min-height:0}
+.day{flex:1;display:grid;grid-template-columns:31mm 1fr;border:.55mm solid var(--g);border-radius:0 7mm 7mm 0;overflow:hidden;margin:0}
+.day>h2{background:var(--g);color:var(--p);margin:0;padding:0 2mm;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:15pt;letter-spacing:.06em;border-radius:15.5mm 15.5mm 0 0;margin:2mm 0 0 2mm;text-align:center}
+.day>h2::after{display:none}
+.day>h2 svg{width:6mm;height:auto;margin-bottom:2mm}
+.day ul{display:grid;grid-template-columns:1fr 1.2fr 1.2fr;align-items:center;padding:0 2mm 0 5mm}
+.day li{border:0;border-left:.2mm solid rgba(23,58,44,.25);padding:1mm 4.5mm;align-self:center}
+.day li:first-child{border-left:0;padding-left:0}
+.day .l1 b{font-size:7.6pt;letter-spacing:.2em;color:var(--zt)}
+.day .l2{font-size:11.6pt;line-height:1.28;margin-top:1.2mm}
+.win{min-height:0}
+.sheet>header{flex:none}
