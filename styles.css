@@ -13,7 +13,7 @@
   --zlata:#E0A12B; --paprika:#B5361F; --linka:rgba(23,58,44,.22);
   --display:"Big Shoulders","Arial Narrow",Impact,sans-serif;
   --text:"Newsreader",Georgia,"Times New Roman",serif;
-  --wrap:1180px;
+  --wrap:1320px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
@@ -265,3 +265,10 @@ p{margin:0 0 1em}
 @media (max-width:520px){.foot-in{grid-template-columns:1fr}}
 .res label{min-width:0}
 @media (min-width:1081px){.res .row3{grid-template-columns:1fr 1fr}.res .row3 label:last-child{grid-column:1/-1}}
+
+/* ===== jedna ľavá hrana: logo, hero a celý web na rovnakej čiare ===== */
+.top{padding-left:max(28px,calc((100% - var(--wrap))/2 + 28px));padding-right:max(28px,calc((100% - var(--wrap))/2 + 28px))}
+.hero{max-width:var(--wrap)}
+.foot-in,.foot-bar,.foot-note{max-width:calc(var(--wrap) - 56px)}
+.wrap.narrow{max-width:var(--wrap)}
+.wrap.narrow>*{max-width:884px}
