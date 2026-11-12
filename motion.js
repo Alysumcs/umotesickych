@@ -133,6 +133,16 @@
       gsap.to(f,{clipPath:f.classList.contains('arch')||f.classList.contains('ext')?'inset(0% 0% 0% 0% round 999px 999px 0 0)':'inset(0% 0% 0% 0%)',duration:1.2,ease:'power4.inOut',delay:inRow?i*.12:0,clearProps:'clipPath'})}});
     gsap.fromTo(im,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:f,start:'top bottom',end:'bottom top',scrub:true}})});
 
+  /* galéria interiéru v sekcii O nás: odkrytie po jednej a parallax */
+  var sg=$('.story-gallery');
+  if(sg){var pics=$$('.sg-item picture',sg),caps=$$('.sg-item figcaption',sg);
+    gsap.set(pics,{clipPath:'inset(100% 0% 0% 0%)'});gsap.set(caps,{autoAlpha:0,y:12});
+    pics.forEach(function(p){gsap.set($('img',p),{scale:1.15})});
+    ScrollTrigger.create({trigger:sg,start:'top 80%',once:true,onEnter:function(){
+      gsap.to(pics,{clipPath:'inset(0% 0% 0% 0%)',duration:1.1,ease:'power4.inOut',stagger:.15,clearProps:'clipPath'});
+      gsap.to(caps,{autoAlpha:1,y:0,duration:.6,stagger:.15,delay:.6})}});
+    pics.forEach(function(p,i){gsap.fromTo($('img',p),{yPercent:i%2?-4:-8},{yPercent:i%2?4:8,ease:'none',scrollTrigger:{trigger:p,start:'top bottom',end:'bottom top',scrub:true}})});}
+
   /* fotka pri nápojoch ostane stáť, kým okolo nej prejde pivo a víno */
   var tp=$('.tap-photo'),tg=$('.tap-grid');
   if(tp&&tg)ScrollTrigger.matchMedia({'(min-width: 901px)':function(){

@@ -71,3 +71,7 @@ li:last-child{border-bottom:0}
 .day .l2{font-size:11.6pt;line-height:1.28;margin-top:1.2mm}
 .win{min-height:0}
 .sheet>header{flex:none}
+
+/* denné menu: fotka jedla v oblúku, názov dňa na zelenom páse */
+.day>h2{background-size:auto 190%;background-position:50% 92%;padding:0;justify-content:flex-end;position:relative;overflow:hidden;box-shadow:inset 0 0 0 .5mm var(--z)}
+.day>h2 span{display:block;width:100%;background:var(--g);color:var(--p);padding:2.2mm 0 2mm;font:800 13pt/1 "Big Shoulders",sans-serif;letter-spacing:.08em;text-align:center;border-top:.5mm solid var(--z)}
